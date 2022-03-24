@@ -8,3 +8,27 @@
  */
 
 /* Các tùy chỉnh CSS của giao diện nên để vào đây */
+
+*::-webkit-scrollbar {
+    width: 5px;
+    height: 5px;
+}
+
+*::-webkit-scrollbar-thumb {
+    background: #00000020;
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    -ms-border-radius: 5px;
+    -o-border-radius: 5px;
+}
+.panel {
+    border: none !important;
+}
+.sidebar {
+    background: #000 !important;
+}
+.sidebar-nav, .sidebar-nav a {
+    background: #00000000 !important;
+    border: none !important;
+}

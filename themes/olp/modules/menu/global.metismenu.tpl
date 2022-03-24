@@ -34,6 +34,20 @@
 		</nav>
 	</aside>
 </div>
+
+<style>
+	.panel {
+		border: none !important;
+	}
+	.sidebar {
+		background: #000 !important;
+	}
+	.sidebar-nav, .sidebar-nav a {
+		background: #00000000 !important;
+		border: none !important;
+	}
+</style>
+
 <script type="text/javascript">
 $(function () {
 	$('#menu_{MENUID}').metisMenu({

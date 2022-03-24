@@ -3,11 +3,14 @@
 {FILE "header_extended.tpl"}
 
 <div class="row">
-    <div class="col-md-4 col-sm-6 navbar">
+    <div class="col-md-4 col-sm-6 navbar" style="border-radius: 0">
         <div class="toggle-button">
-            <em class="fa-solid fa-bars"></em>
+            &equiv;
         </div>
-        [LEFT]
+        <div class="navbar-wrapper">
+            [LOGO]
+            [LEFT]
+        </div>
     </div>
     <div class="col-md-20 col-sm-18 content">
         [TOP]
@@ -22,6 +25,10 @@
         transition: .4s ease;
         position: relative;
     }
+    .navbar-wrapper {
+        height: 100%;
+        overflow: auto;
+    }
     .content {
         height: 100vh;
         overflow: auto;
@@ -35,6 +42,8 @@
         background: #000;
         color: #fff;
         cursor: pointer;
+        display: none;
+        font-size: 20px;
     }
 
     @media screen and (max-width: 767px) {
@@ -49,8 +58,23 @@
         .navbar.active {
             left: 0;
         }
+        .toggle-button {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .navbar.active .toggle-button {
+            transform: translateX(-100%);
+            position: relative;
+        }
     }
 </style>
+
+<script>
+    const toggleButton = document.querySelector('.toggle-button')
+    toggleButton.onclick = () => document.querySelector('.navbar').classList.toggle('active')
+</script>
+
 {FILE "footer_extended.tpl"}
 {FILE "footer_only.tpl"}
 <!-- END: main -->

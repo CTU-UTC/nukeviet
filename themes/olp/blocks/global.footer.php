@@ -13,16 +13,16 @@ if (!defined('NV_MAINFILE')) {
     exit('Stop!!!');
 }
 
-if (!nv_function_exists('nv_logo')) {
+if (!nv_function_exists('nv_footer')) {
     /**
-     * nv_logo_config()
+     * nv_footer_config()
      *
      * @param string $module
      * @param array  $data_block
      * @param array  $lang_block
      * @return string
      */
-    function nv_logo_config($module, $data_block, $lang_block)
+    function nv_footer_config($module, $data_block, $lang_block)
     {
         global $lang_global,$global_config, $selectthemes;
 
@@ -32,7 +32,7 @@ if (!nv_function_exists('nv_logo')) {
         }
 
         $html = '<div class="form-group">';
-        $html .= var_dump($global_config);
+        $html .= '<img src="/' . $global_config['site_logo'].'" />';
         $html .= '</div>';
 
         return $html;
@@ -43,7 +43,7 @@ if (!nv_function_exists('nv_logo')) {
      *
      * @return array
      */
-    function nv_logo_submit()
+    function nv_footer_submit()
     {
         global $nv_Request;
 
@@ -55,24 +55,24 @@ if (!nv_function_exists('nv_logo')) {
     }
 
     /**
-     * nv_logo()
+     * nv_footer()
      *
      * @param array $block_config
      * @return string
      */
-    function nv_logo($block_config)
+    function nv_footer($block_config)
     {
         global $global_config, $lang_global;
 
-        if (file_exists(NV_ROOTDIR . '/themes/' . $global_config['module_theme'] . '/blocks/global.logo.tpl')) {
+        if (file_exists(NV_ROOTDIR . '/themes/' . $global_config['module_theme'] . '/blocks/global.footer.tpl')) {
             $block_theme = $global_config['module_theme'];
-        } elseif (file_exists(NV_ROOTDIR . '/themes/' . $global_config['site_theme'] . '/blocks/global.logo.tpl')) {
+        } elseif (file_exists(NV_ROOTDIR . '/themes/' . $global_config['site_theme'] . '/blocks/global.footer.tpl')) {
             $block_theme = $global_config['site_theme'];
         } else {
             $block_theme = 'default';
         }
 
-        $xtpl = new XTemplate('global.logo.tpl', NV_ROOTDIR . '/themes/' . $block_theme . '/blocks');
+        $xtpl = new XTemplate('global.footer.tpl', NV_ROOTDIR . '/themes/' . $block_theme . '/blocks');
         $xtpl->assign('LANG', $lang_global);
         $xtpl->assign('NV_BASE_SITEURL', NV_BASE_SITEURL);
         $xtpl->assign('DATA', $global_config);
@@ -84,5 +84,5 @@ if (!nv_function_exists('nv_logo')) {
 }
 
 if (defined('NV_SYSTEM')) {
-    $content = nv_logo($block_config);
+    $content = nv_footer($block_config);
 }
