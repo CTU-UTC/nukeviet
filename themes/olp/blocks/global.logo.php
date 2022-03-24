@@ -75,6 +75,8 @@ if (!nv_function_exists('nv_logo')) {
         $xtpl = new XTemplate('global.logo.tpl', NV_ROOTDIR . '/themes/' . $block_theme . '/blocks');
         $xtpl->assign('LANG', $lang_global);
         $xtpl->assign('NV_BASE_SITEURL', NV_BASE_SITEURL);
+        
+        $global_config['site_logo'] = NV_BASE_SITEURL.$global_config['site_logo'];
         $xtpl->assign('DATA', $global_config);
 
         $xtpl->parse('main');
